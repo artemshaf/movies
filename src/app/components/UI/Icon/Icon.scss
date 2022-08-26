@@ -1,0 +1,7 @@
+.icon {
+  @apply w-[40px] h-[40px];
+
+  &__container {
+    @apply w-[40px] h-[40px] flex items-center justify-center;
+  }
+}

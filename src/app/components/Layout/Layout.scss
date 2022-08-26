@@ -1,0 +1,9 @@
+@tailwind base;
+@layer base {
+  .main {
+    @apply flex;
+  }
+  .main__body {
+    @apply bg-light w-[100%];
+  }
+}
