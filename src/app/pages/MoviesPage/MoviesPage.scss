@@ -1,0 +1,51 @@
+.movies-page {
+  @apply grid gap-5 p-5 text-white min-h-screen;
+  grid-template-columns: auto;
+  grid-template-rows: repeat(2, auto);
+  grid-template-areas:
+    "filters"
+    "movies";
+
+  @screen md {
+    grid-template-columns: 250px auto;
+    grid-template-rows: repeat(2, auto);
+
+    grid-template-areas:
+      "filters filters"
+      "movies movies";
+  }
+  @screen xl {
+    grid-template-columns: 400px auto;
+    grid-template-rows: repeat(2, auto);
+    grid-template-areas:
+      "filters filters"
+      "movies movies";
+  }
+
+  &__filters {
+    @apply h-[40px] grid;
+    grid-area: filters;
+    grid-template-columns: repeat(3, auto);
+    & input {
+      @apply px-2 rounded-md bg-dark;
+    }
+    &__adult {
+      @apply flex items-center ml-5;
+    }
+
+    &__select {
+      @apply z-20;
+    }
+  }
+  &__movies {
+    @apply h-full flex flex-col;
+    grid-area: movies;
+
+    &__pages {
+      @apply flex gap-x-8 flex-wrap py-5 items-center justify-center text-lg z-20 mt-auto;
+      & * {
+        @apply bg-primary-blue-500 p-1 rounded-lg;
+      }
+    }
+  }
+}

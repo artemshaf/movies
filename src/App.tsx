@@ -1,5 +1,12 @@
+import { AppRouter, withLayout } from "app/components";
+import { useEffect } from "react";
+import { useGetMovieGenresQuery } from "./app/services";
+import { useAppDispatch } from "./app/store";
+
 function App() {
-  return <div className="App">123</div>;
+  useGetMovieGenresQuery();
+
+  return <AppRouter />;
 }
 
-export default App;
+export default withLayout(App);

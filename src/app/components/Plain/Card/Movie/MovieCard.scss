@@ -1,0 +1,58 @@
+.movie {
+  &__cards {
+    @apply grid grid-cols-1 text-white gap-5;
+    @screen sm {
+      @apply grid-cols-2;
+    }
+    @screen lg {
+      @apply grid-cols-3;
+    }
+    @screen 2xl {
+      @apply grid-cols-4;
+    }
+    @screen 2xl {
+      @apply grid-cols-5;
+    }
+  }
+  &__card {
+    @apply flex w-full relative h-full flex-col min-h-[400px]  bg-cover text-white hover:cursor-pointer;
+    & * {
+      @apply text-current duration-md;
+    }
+    &:hover {
+      @apply bg-opacity-20;
+      .movie__card__info {
+        @apply p-5 bg-dark-blue bg-opacity-80;
+      }
+      .movie__card__icon_play {
+        @apply opacity-80 top-[30%];
+      }
+    }
+    &__info {
+      @apply p-5 bg-dark-blue bg-opacity-50 mt-auto duration-md;
+    }
+
+    &__tags {
+      @apply flex gap-x-1;
+      & > span {
+        @apply p-[5px];
+      }
+    }
+
+    & * {
+      @apply z-10;
+    }
+    &__rating {
+      @apply flex;
+    }
+    &__btn {
+      @apply flex items-center gap-x-2;
+    }
+    &__icon {
+      @apply absolute top-[50%] right-[50%] duration-lg;
+      &_play {
+        @apply absolute top-[10%] right-[50%] translate-x-[50%] -translate-y-[50%] opacity-0 p-4 bg-dark-blue;
+      }
+    }
+  }
+}

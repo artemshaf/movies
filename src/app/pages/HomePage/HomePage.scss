@@ -1,0 +1,6 @@
+.home-page {
+  @apply text-white;
+  &__titles {
+    @apply my-10 mx-5 uppercase border-b-2 border-white;
+  }
+}

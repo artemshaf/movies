@@ -15,14 +15,7 @@
     "isolatedModules": false,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "src",
-    "paths": {
-      "@components": ["./app/components/index"],
-      "@pages": ["./app/pages/index"],
-      "@utils": ["./app/utils/index"],
-      "@services": ["./app/services/index"],
-      "@store/*": ["./app/store/*"]
-    }
+    "baseUrl": "./src"
   },
   "include": ["src"]
 }

@@ -2,4 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply bg-dark-blue;
+}
+
 @import url("./fonts.scss");
