@@ -4,6 +4,7 @@ import {
   GET_REVIEWS_DATE,
   GET__ORIGINAL_IMAGE,
   shuffledArrayAndSelected,
+  useTitle,
 } from "app/helpers";
 import { Poster } from "app/interfaces";
 import {
@@ -35,6 +36,8 @@ const DetailPage = ({ className, ...props }: IDetailPageInterface) => {
     useGetMovieRecommendationByIdQuery(id);
   const { data: ReviewsData, isLoading: isLoadingReviews } =
     useGetMovieReviewsByIdQuery({ id, page: 1 });
+
+  useTitle(movie?.title || movie?.original_title || "Movie app", false);
 
   const [controlledSwiper, setControlledSwiper] = useState<SwiperCore>();
   const setNext = () => controlledSwiper?.slideNext();
@@ -247,10 +250,10 @@ const DetailPage = ({ className, ...props }: IDetailPageInterface) => {
               </ul>
             </div>
           </div>
-          {isLoadingRecommendation ? (
+          {RecommendationData?.results.length === 0 ? (
             <></>
           ) : (
-            <div className="p-5">
+            <div className="detail-page__see-with">
               <h1 className="my-5">Часто вместе с этим смотрят:</h1>
               <SwiperMovieCard
                 swiperProps={{

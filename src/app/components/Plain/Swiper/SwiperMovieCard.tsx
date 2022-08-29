@@ -8,7 +8,7 @@ import { Icon, MovieCard } from "app/components";
 
 export const SwiperMovieCard = ({
   swiperProps: transferSwiperProps,
-  items,
+  items = [],
   className,
   style,
 }: ISwiperMovieCardInterface) => {
@@ -58,7 +58,12 @@ export const SwiperMovieCard = ({
     <Swiper wrapperTag="ul" tag="section" {...swiperProps}>
       {items.map((item) => (
         <SwiperSlide tag="li" key={item.id} className="main-swiper__slide">
-          <MovieCard movie={item} className={className} style={style} />
+          <MovieCard
+            movie={item}
+            className={className}
+            style={style}
+            key={item.id}
+          />
         </SwiperSlide>
       ))}
       <button

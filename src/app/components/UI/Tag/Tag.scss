@@ -1,6 +1,9 @@
-.tag {
-  @apply text-[#0FEFFD] px-3 py-2 bg-slate-900 rounded-xl capitalize;
-  &:hover {
-    @apply underline;
+@tailwind utilities;
+@layer utilities {
+  .tag {
+    @apply text-[#0FEFFD] px-3 py-2 bg-slate-900 rounded-xl capitalize;
+    &:hover {
+      @apply underline;
+    }
   }
 }

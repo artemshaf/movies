@@ -1,10 +1,13 @@
-.loader {
-  &__container {
-    @apply pointer-events-auto fixed w-full h-full min-h-screen bg-slate-400 bg-opacity-40 flex items-center justify-center;
-    & .not-search {
-      @apply text-red-400 flex flex-col justify-evenly fill-red-400;
+@tailwind utilities;
+@layer utilities {
+  .loader {
+    &__container {
+      @apply pointer-events-auto fixed w-full h-full min-h-screen bg-slate-400 bg-opacity-40 flex items-center justify-center;
+      & .not-search {
+        @apply text-red-400 flex flex-col justify-evenly fill-red-400;
+      }
     }
-  }
 
-  @apply animate-spin;
+    @apply animate-spin;
+  }
 }

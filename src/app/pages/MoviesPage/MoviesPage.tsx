@@ -16,7 +16,6 @@ export const MoviesPage: FC = (): JSX.Element => {
   const [visibleMovies, setVisibleMovies] = useState<IMovieResponse>();
   const [pages, setPages] = useState<number>();
   const [currentPage, setCurrentPage] = useState(1);
-
   const [inputYear, setInputYear] = useState("");
   const [inputName, setInputName] = useState("");
   const [inputAdult, setInputAdult] = useState(false);
@@ -39,7 +38,6 @@ export const MoviesPage: FC = (): JSX.Element => {
 
   const req = async () => {
     if (!inputName) {
-      setCurrentPage(1);
       await triggerTrend({
         page: currentPage,
       });
@@ -70,6 +68,11 @@ export const MoviesPage: FC = (): JSX.Element => {
     setPages(result.data?.total_pages!);
     setVisibleMovies(result.data);
   }, [result, result.data?.total_pages]);
+
+  useEffect(() => {
+    setPages(resultTrend.data?.total_pages!);
+    setVisibleMovies(resultTrend.data);
+  }, [resultTrend]);
 
   useEffect(() => {
     makeRequestDebounce();
@@ -112,6 +115,7 @@ export const MoviesPage: FC = (): JSX.Element => {
         )}
         {pages ? (
           <ReactPaginate
+            activeClassName="movies-page__movies__pages_active"
             pageCount={pages}
             onPageChange={(e) => setCurrentPage(e.selected + 1)}
             className="movies-page__movies__pages"

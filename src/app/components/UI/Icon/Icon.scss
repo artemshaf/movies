@@ -1,7 +1,12 @@
-.icon {
-  @apply w-[40px] h-[40px];
-
-  &__container {
-    @apply w-[40px] h-[40px] flex items-center justify-center;
+@tailwind utilities;
+@layer utilities {
+  .icon {
+    width: 40px;
+    height: 40px;
+    &__container {
+      @apply flex items-center justify-center;
+      width: 40px;
+      height: 40px;
+    }
   }
 }

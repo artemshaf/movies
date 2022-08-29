@@ -1,9 +1,10 @@
 import { FunctionComponent } from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { store } from "app/store/store";
+import { persistor, store } from "app/store";
 import { ILayoutInterface } from "./Layout.interface";
 import "./Layout.scss";
+import { PersistGate } from "redux-persist/integration/react";
 
 export const Layout = ({ children, ...props }: ILayoutInterface) => {
   return (
@@ -22,9 +23,11 @@ export const withLayout = <T extends Record<string, unknown>>(
     return (
       <BrowserRouter>
         <Provider store={store}>
-          <Layout>
-            <Component {...props} />
-          </Layout>
+          <PersistGate loading={null} persistor={persistor}>
+            <Layout>
+              <Component {...props} />
+            </Layout>
+          </PersistGate>
         </Provider>
       </BrowserRouter>
     );

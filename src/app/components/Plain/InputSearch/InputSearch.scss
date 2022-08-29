@@ -1,27 +1,43 @@
-.input-search {
-  &__container {
-    @apply text-dark-blue duration-md opacity-40 fixed top-0 left-[50%] p-2 z-20 -translate-x-[50%]  cursor-pointer flex flex-col items-center justify-center;
-    &_open {
-      @apply opacity-100 bg-dark;
-    }
-  }
-  &__block {
-    @apply flex;
-    .input-search {
-      @apply w-0 h-[40px] rounded-md duration-md;
+@tailwind utilities;
+@layer utilities {
+  .input-search {
+    &__container {
+      @apply text-dark-blue duration-md opacity-40 fixed top-0 p-2 z-20 cursor-pointer flex flex-col items-center justify-center;
+      left: 50%;
+      transform: translateX(-50%);
+
       &_open {
-        @apply w-[200px] md:w-[400px] px-2;
+        @apply opacity-100 bg-dark;
       }
     }
-  }
-  &__list {
-    @apply w-0 overflow-hidden h-0 opacity-0;
-    &_open {
-      @apply flex flex-col gap-y-2 w-[240px] md:w-[440px] h-full py-4 overflow-visible opacity-100 text-white;
-      & > li {
-        @apply duration-md px-2;
-        &:hover {
-          @apply -translate-x-[3px] -translate-y-[3px];
+    &__block {
+      @apply flex;
+      .input-search {
+        @apply rounded-md duration-md;
+        height: 40px;
+        width: 0px;
+        &_open {
+          @apply px-2;
+          width: 200px;
+          @screen md {
+            width: 400px;
+          }
+        }
+      }
+    }
+    &__list {
+      @apply w-0 overflow-hidden h-0 opacity-0;
+      &_open {
+        @apply flex flex-col gap-y-2 h-full py-4 overflow-visible opacity-100 text-white;
+        width: 240px;
+        @screen md {
+          width: 440px;
+        }
+        & > li {
+          @apply duration-md px-2;
+          &:hover {
+            transform: translateX(-3px) translateY(-3px);
+          }
         }
       }
     }

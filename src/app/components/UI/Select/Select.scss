@@ -1,8 +1,11 @@
-.ui-select {
-  &__block {
-    @apply capitalize text-white;
-    & {
-      @apply text-white;
+@tailwind utilities;
+@layer utilities {
+  .ui-select {
+    &__block {
+      @apply capitalize text-white;
+      & {
+        @apply text-white;
+      }
     }
   }
 }

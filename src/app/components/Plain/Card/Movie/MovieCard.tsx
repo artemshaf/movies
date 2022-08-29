@@ -20,7 +20,7 @@ export const MovieCard = ({
     () =>
       genres
         ? movie.genre_ids
-            .slice(0, 3)
+            .slice(0, 2)
             .map((genreId) => genres.find((item) => item.id === genreId)?.name)
         : [],
     [genres, movie]

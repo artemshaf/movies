@@ -9,6 +9,8 @@ import { IHomePageInterace } from "./HomePage.interace";
 import { IMovie } from "app/interfaces";
 import { SwiperMovieCard, InputSearch } from "app/components";
 import "./HomePage.scss";
+import DetailPage from "../DetailPage/DetailPage";
+import { MoviesPage } from "../MoviesPage";
 
 export const HomePage = ({ className, ...props }: IHomePageInterace) => {
   const { data: mostPopular, isLoading: isLoadingPopular } =
@@ -53,6 +55,7 @@ export const HomePage = ({ className, ...props }: IHomePageInterace) => {
           },
         }}
       />
+      <MoviesPage />
     </section>
   );
 };

@@ -8,11 +8,14 @@ import "./MainSwiper.scss";
 import { Lazy, Navigation, Pagination, Thumbs } from "swiper";
 import { Icon, Tag, Rating, Button } from "app/components";
 import { useRef, useState } from "react";
+import { useAppSelector } from "app/store";
+import { useGetMovieGenresQuery } from "../../../../services";
 
 export const MainSwiper = ({ items = [] }: IMainSwiperInterface) => {
   const [controlledSwiper, setControlledSwiper] = useState<SwiperCore>();
   const setNext = () => controlledSwiper?.slideNext();
   const setPrev = () => controlledSwiper?.slidePrev();
+  const { data: genres } = useGetMovieGenresQuery();
 
   const swiperProps: SwiperProps = {
     direction: "horizontal",
@@ -50,7 +53,14 @@ export const MainSwiper = ({ items = [] }: IMainSwiperInterface) => {
         >
           <div className="main-swiper__content">
             <div>
-              <Tag className="main-swiper__content__tag">123</Tag>
+              <div className="main-swiper__content__tag__container">
+                {item.genre_ids.slice(0, 4).map((genreId) => (
+                  <Tag className="main-swiper__content__tag" key={genreId}>
+                    {genres?.genres.find((item) => item.id === genreId)?.name}
+                  </Tag>
+                ))}
+              </div>
+
               <Rating
                 rating={item.vote_average}
                 edit={false}

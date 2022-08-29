@@ -1,111 +1,123 @@
-.detail-page {
-  @apply flex flex-col gap-y-10 text-white;
-  &__promo {
-    @apply w-full h-[400px] bg-opacity-60 bg-cover bg-center flex justify-evenly items-center;
-    &__play {
-      @apply animate-pulse w-[100px] h-[100px] border-[5px] border-white rounded-full flex justify-center items-center  duration-md cursor-pointer p-5 bg-opacity-40 bg-dark-blue;
-      & svg {
-        @apply duration-md;
-      }
-      &:hover {
-        @apply opacity-100 scale-150;
-      }
-    }
-
-    &__descr {
-      @apply w-1/2 text-white hidden flex-col gap-y-5 p-5 bg-dark-blue bg-opacity-60 duration-md rounded-2xl;
-      &:hover {
-        @apply bg-opacity-100;
-      }
-    }
-    @screen lg {
-      @apply h-screen;
+@tailwind utilities;
+@layer utilities {
+  .detail-page {
+    @apply flex flex-col gap-y-10 text-white min-h-screen;
+    &__promo {
+      @apply w-full  bg-opacity-60 bg-cover bg-center flex justify-evenly items-center;
+      height: 400px;
       &__play {
-        @apply flex;
+        @apply animate-pulse   border-white rounded-full flex justify-center items-center  duration-md cursor-pointer p-5 bg-opacity-40 bg-dark-blue;
+        height: 100px;
+        width: 100px;
+        border-width: 5px;
+        & svg {
+          @apply duration-md;
+        }
+        &:hover {
+          @apply opacity-100 scale-150;
+        }
       }
+
       &__descr {
-        @apply flex;
+        @apply text-white hidden flex-col gap-y-5 p-5 bg-dark-blue bg-opacity-60 duration-md rounded-2xl;
+        width: 50%;
+        &:hover {
+          @apply bg-opacity-100;
+        }
+      }
+      @screen lg {
+        @apply h-screen;
+        &__play {
+          @apply flex;
+        }
+        &__descr {
+          @apply flex;
+        }
       }
     }
-  }
-  &__grid {
-    @apply grid xl:gap-x-10 gap-x-4 bg-no-repeat bg-center bg-cover mx-5 gap-y-3;
-    grid-template-columns: minmax(320px, 720px);
-    grid-template-rows: repeat(3, auto);
-    grid-template-areas:
-      "videos"
-      "descr"
-      "people";
-    @screen md {
-      grid-template-columns: 420px auto;
-      grid-template-rows: repeat(1fr, 3);
+    &__grid {
+      @apply grid xl:gap-x-10 gap-x-4 bg-no-repeat bg-center bg-cover mx-5 gap-y-3;
+      grid-template-columns: minmax(320px, 720px);
+      grid-template-rows: repeat(3, auto);
       grid-template-areas:
-        "videos descr"
-        "people people";
-    }
-
-    @screen 2xl {
-      grid-template-columns: 720px auto 320px;
-      grid-template-areas: "videos descr people";
-    }
-
-    &__videos {
-      grid-area: videos;
-      @apply flex flex-col gap-y-5;
-      & img {
-        @apply w-full object-cover;
-      }
-      &__main {
-        @apply w-full;
-      }
-      &__slider {
-        @apply w-full h-[500px];
+        "videos"
+        "descr"
+        "people";
+      @screen md {
+        grid-template-columns: 420px auto;
+        grid-template-rows: repeat(1fr, 3);
+        grid-template-areas:
+          "videos descr"
+          "people people";
       }
 
-      &__slide {
-        @apply w-full h-full;
+      @screen 2xl {
+        grid-template-columns: 720px auto 320px;
+        grid-template-areas: "videos descr people";
+      }
+
+      &__videos {
+        grid-area: videos;
+        @apply flex flex-col gap-y-5;
         & img {
-          @apply object-center h-full w-full;
+          @apply w-full object-cover;
         }
-      }
-    }
+        &__main {
+          @apply w-full;
+        }
+        &__slider {
+          @apply w-full;
+          height: 500px;
+        }
 
-    &__descr {
-      grid-area: descr;
-      @apply flex flex-col gap-y-5;
-      &__title {
-        &_block {
-          @apply flex justify-between items-center;
+        &__slide {
+          @apply w-full h-full;
+          & img {
+            @apply object-center h-full w-full;
+          }
         }
       }
-      &__list {
-        @apply capitalize;
+
+      &__descr {
+        grid-area: descr;
+        @apply flex flex-col gap-y-5;
+        &__title {
+          &_block {
+            @apply flex justify-between items-center;
+          }
+        }
+        &__list {
+          @apply capitalize;
+        }
       }
-    }
-    &__peoples {
-      grid-area: people;
-      @apply min-h-[20px];
-      &__title {
-        @apply my-5;
-      }
-      &__reviews {
-        @apply flex flex-col w-full gap-y-5;
-        &-item {
-          & > div {
-            @apply flex items-center gap-x-5;
-            * > .date-tag {
-              @apply ml-auto;
+      &__peoples {
+        grid-area: people;
+        min-height: 20px;
+        &__title {
+          @apply my-5;
+        }
+        &__reviews {
+          @apply flex flex-col w-full gap-y-5;
+          &-item {
+            & > div {
+              @apply flex items-center gap-x-5;
+              * > .date-tag {
+                @apply ml-auto;
+              }
+            }
+            & > p.content {
+              overflow: hidden;
+              display: -webkit-box;
+              -webkit-line-clamp: 3;
+              -webkit-box-orient: vertical;
+              line-clamp: 3;
             }
           }
-          & > p.content {
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            line-clamp: 3;
-          }
         }
       }
+    }
+    &__see-with {
+      @apply mt-auto;
     }
   }
 }

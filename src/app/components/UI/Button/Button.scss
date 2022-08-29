@@ -1,12 +1,15 @@
-.button {
-  @apply flex items-center gap-x-1;
+@tailwind utilities;
+@layer utilities {
+  .button {
+    @apply flex items-center gap-x-1;
 
-  & svg {
-    @apply duration-md;
-  }
-  &:hover {
     & svg {
-      @apply translate-x-2;
+      @apply duration-md;
+    }
+    &:hover {
+      & svg {
+        @apply translate-x-2;
+      }
     }
   }
 }

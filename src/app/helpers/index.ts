@@ -16,5 +16,3 @@ export const GET_REVIEWS_DATE = (date: number | Date) =>
   })
     .format(new Date(date))
     .toString();
-
-// new Date(Date.parse(date.toString())).toLocaleDateString();
