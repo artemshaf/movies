@@ -103,8 +103,20 @@ const DetailPage = ({ className, ...props }: IDetailPageInterface) => {
                 {...swiperProps}
                 className="detail-page__grid__videos__slider"
               >
-                {shuffledArrayAndSelected<Poster>([...ImagesData?.backdrops], 2)
-                  .concat(shuffledArrayAndSelected([...ImagesData?.posters], 2))
+                {shuffledArrayAndSelected<Poster>(
+                  ImagesData?.backdrops.length > 0
+                    ? [...ImagesData?.backdrops]
+                    : [],
+                  2
+                )
+                  .concat(
+                    shuffledArrayAndSelected(
+                      ImagesData?.posters.length > 0
+                        ? [...ImagesData?.posters]
+                        : [],
+                      2
+                    )
+                  )
                   .map((item, index) => (
                     <SwiperSlide
                       tag="li"
@@ -137,7 +149,6 @@ const DetailPage = ({ className, ...props }: IDetailPageInterface) => {
                 <h1>{movie.title}</h1>
                 <Tag>{movie.status}</Tag>
               </div>
-              {/* <h2>{movie.}</h2> */}
               <h2>{movie.overview}</h2>
               <ul className="detail-page__grid__descr__list">
                 <li>

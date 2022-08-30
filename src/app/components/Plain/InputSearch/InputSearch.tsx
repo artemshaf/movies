@@ -34,6 +34,8 @@ export const InputSearch = () => {
     makeRequestDebounce(value);
   };
 
+  useEffect(() => {}, [result.isLoading]);
+
   return (
     <div
       className={classNames("input-search__container", {

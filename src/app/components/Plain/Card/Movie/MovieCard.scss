@@ -56,9 +56,10 @@
         @apply absolute duration-lg;
         top: 50%;
         right: 50%;
+        transform: translateX(0) translateY(0);
         &_play {
-          transform: translateX(50) translateY(-50%);
-          top: 10%;
+          transform: translateX(50%) translateY(-50%);
+          top: 0;
           right: 50%;
           @apply absolute opacity-0 p-4 bg-dark-blue;
         }

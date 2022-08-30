@@ -61,13 +61,14 @@ export const MoviesPage: FC = (): JSX.Element => {
   }, 700);
 
   useEffect(() => {
+    setVisibleMovies(resultTrend?.data);
     req();
   }, []);
 
   useEffect(() => {
     setPages(result.data?.total_pages!);
     setVisibleMovies(result.data);
-  }, [result, result.data?.total_pages]);
+  }, [result]);
 
   useEffect(() => {
     setPages(resultTrend.data?.total_pages!);
@@ -105,25 +106,31 @@ export const MoviesPage: FC = (): JSX.Element => {
           onChange={(e) => setInputName(e.target.value)}
         />
       </section>
-      <section className="movies-page__movies">
-        {visibleMovies?.results.length === 0 ? (
-          <NotSearch />
-        ) : result.isLoading ? (
-          <Loader />
-        ) : (
-          <MovieCardList movies={visibleMovies ? visibleMovies?.results : []} />
-        )}
-        {pages ? (
-          <ReactPaginate
-            activeClassName="movies-page__movies__pages_active"
-            pageCount={pages}
-            onPageChange={(e) => setCurrentPage(e.selected + 1)}
-            className="movies-page__movies__pages"
-          />
-        ) : (
-          <></>
-        )}
-      </section>
+      {visibleMovies?.results ? (
+        <section className="movies-page__movies">
+          {visibleMovies?.results.length === 0 ? (
+            <NotSearch />
+          ) : result.isLoading ? (
+            <Loader />
+          ) : (
+            <MovieCardList
+              movies={visibleMovies.results ? visibleMovies?.results : []}
+            />
+          )}
+          {pages ? (
+            <ReactPaginate
+              activeClassName="movies-page__movies__pages_active"
+              pageCount={pages}
+              onPageChange={(e) => setCurrentPage(e.selected + 1)}
+              className="movies-page__movies__pages"
+            />
+          ) : (
+            <></>
+          )}
+        </section>
+      ) : (
+        <></>
+      )}
     </section>
   );
 };
