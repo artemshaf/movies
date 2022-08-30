@@ -104,15 +104,19 @@ const DetailPage = ({ className, ...props }: IDetailPageInterface) => {
                 className="detail-page__grid__videos__slider"
               >
                 {shuffledArrayAndSelected<Poster>(
-                  ImagesData?.backdrops.length > 0
-                    ? [...ImagesData?.backdrops]
+                  ImagesData
+                    ? ImagesData?.backdrops.length > 0
+                      ? [...ImagesData?.backdrops]
+                      : []
                     : [],
                   2
                 )
                   .concat(
                     shuffledArrayAndSelected(
-                      ImagesData?.posters.length > 0
-                        ? [...ImagesData?.posters]
+                      ImagesData
+                        ? ImagesData?.posters.length > 0
+                          ? [...ImagesData?.posters]
+                          : []
                         : [],
                       2
                     )

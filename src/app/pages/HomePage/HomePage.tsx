@@ -25,9 +25,14 @@ export const HomePage = ({ className, ...props }: IHomePageInterace) => {
       <InputSearch />
       <MainSwiper
         items={
-          isLoadingPopular
+          mostPopular?.results === undefined
             ? []
-            : shuffledArrayAndSelected<IMovie>([...mostPopular?.results!], 3)
+            : shuffledArrayAndSelected<IMovie>(
+                mostPopular?.results.length > 0
+                  ? [...mostPopular?.results!]
+                  : [],
+                3
+              )
         }
       />
       <Button className="home-page__titles">
