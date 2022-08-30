@@ -1,4 +1,4 @@
-import { Button, Icon, MainSwiper } from "app/components";
+import { Button, Icon, Loader, MainSwiper } from "app/components";
 import {
   useGetMovieInTrendQuery,
   useGetTheMostPopularQuery,
@@ -9,7 +9,6 @@ import { IHomePageInterace } from "./HomePage.interace";
 import { IMovie } from "app/interfaces";
 import { SwiperMovieCard, InputSearch } from "app/components";
 import "./HomePage.scss";
-import DetailPage from "../DetailPage/DetailPage";
 import { MoviesPage } from "../MoviesPage";
 
 export const HomePage = ({ className, ...props }: IHomePageInterace) => {
@@ -20,7 +19,7 @@ export const HomePage = ({ className, ...props }: IHomePageInterace) => {
   const { data: TopRated, isLoading: isLoadingTopRated } =
     useGetTopRatedQuery();
 
-  return (
+  return mostPopular && inTrend ? (
     <section className="home-page" {...props}>
       <InputSearch />
       <MainSwiper
@@ -62,5 +61,9 @@ export const HomePage = ({ className, ...props }: IHomePageInterace) => {
       />
       <MoviesPage />
     </section>
+  ) : (
+    <>
+      <Loader />
+    </>
   );
 };

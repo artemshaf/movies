@@ -7,7 +7,7 @@ import {
   IMovieReviwsResponse,
   IMovieVideoResponse,
 } from "app/interfaces/movie.interface";
-import { api_v4_token, movieApiBaseUrl } from "./consts";
+import { api_key, api_v4_token, movieApiBaseUrl } from "./consts";
 
 export const movieApi = createApi({
   reducerPath: "@@MOVIE_API_PATH",
@@ -17,7 +17,13 @@ export const movieApi = createApi({
       headers.set("Authorization", `Bearer ${api_v4_token}`);
       return headers;
     },
+    paramsSerializer: (params) => {
+      const par = new URLSearchParams();
+      par.set("api_key", api_key || "");
+      return par.toString();
+    },
   }),
+
   endpoints: (build) => ({
     getMovieById: build.query<IMovieDetail, string>({
       query: (id) => ({
